@@ -5,19 +5,29 @@ import Tag from "../tag";
 import { useState } from "react";
 
 export default function Item({ item }) {
-  const [toggleCheckBox, setToggleCheckBox] = useState(false)
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);
+
   return (
-    <View style={styles.container}>
-      <View style={{ ...styles.colorBox}}>
+    <View style={{ ...styles.container, borderLeftColor: item.color }}>
+      <View style={{ ...styles.colorBox }}>
         <CheckBox
           disabled={false}
-          value={toggleCheckBox}
+          value={item.completed}
           onValueChange={(newValue) => setToggleCheckBox(newValue)}
         />
       </View>
       <View style={styles.content}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.time}>{item.time}</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: 300,
+          }}
+        >
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.time}>{item.time}</Text>
+        </View>
+
         <Text style={styles.details}>{item.details}</Text>
         <View>
           <Tag color={item.color} text={item.tag} />
@@ -32,7 +42,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     width: 390,
-    backgroundColor: "white",
+    backgroundColor: "#f4fcfc",
     alignItems: "flex-start",
     justifyContent: "flex-start",
     borderRadius: 10,
@@ -40,24 +50,26 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.26,
     shadowOffset: 10,
     shadowRadius: 10,
-    elevation: 5,
-    padding: 10,
+    elevation: 0,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     marginHorizontal: 4,
+    borderLeftWidth: 10,
   },
   content: {},
   title: {
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 16,
     paddingVertical: 4,
   },
   time: {
     fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 16,
     paddingVertical: 2,
   },
   details: {
     fontWeight: "normal",
-    fontSize: 16,
+    fontSize: 14,
     paddingVertical: 2,
   },
   colorBox: {
