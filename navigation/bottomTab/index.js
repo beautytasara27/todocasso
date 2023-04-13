@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity,  } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Start from "../../pages/start";
 import Calendar from "../../pages/calendar";
@@ -70,7 +70,7 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Podomoro"
+        name="Focus"
         component={Hourglass}
         options={{
           tabBarIcon: ({ color, size, focused }) => (
